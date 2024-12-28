@@ -5,7 +5,7 @@ const Nav = () => {
     <div>
       <div className="navbar bg-base-100  w-11/12 mx-auto">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown mr-3">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <img className=" w-5" src="https://i.imgur.com/VpKmN04.png" alt="" />
             </div>
