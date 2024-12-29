@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import './swiper.css'
+import "./swiper.css";
 // import required modules
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
@@ -26,27 +26,51 @@ export default function App() {
         >
           <SwiperSlide>
             {" "}
-            <img  className=" object-cover " src="https://i.imgur.com/ze9GaHS.jpg" alt="" />
+            <img
+              className="  "
+              src="https://i.imgur.com/ze9GaHS.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <img  className=" object-cover " src="https://i.imgur.com/WQO6Jh9.png" alt="" />
+            <img
+              className="  "
+              src="https://i.imgur.com/WQO6Jh9.png"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <img  className=" object-cover " src="https://i.imgur.com/EPD97Vc.jpg" alt="" />
+            <img
+              className="  "
+              src="https://i.imgur.com/EPD97Vc.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <img  className=" object-cover " src="https://i.imgur.com/Ab9ssc7.png" alt="" />
+            <img
+              className="  "
+              src="https://i.imgur.com/Ab9ssc7.png"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <img  className=" object-cover " src="https://i.imgur.com/xa6ZBqA.jpg" alt="" />
+            <img
+              className="  "
+              src="https://i.imgur.com/xa6ZBqA.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
             {" "}
-            <img  className=" object-cover " src="https://i.imgur.com/T6rhO0c.jpg" alt="" />
+            <img
+              className="  "
+              src="https://i.imgur.com/T6rhO0c.jpg"
+              alt=""
+            />
           </SwiperSlide>
         </Swiper>
       </div>

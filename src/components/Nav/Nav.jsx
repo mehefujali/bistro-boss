@@ -1,9 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Nav = () => {
+  const {pathname} = useLocation()
   return (
-    <div>
-      <div className="navbar bg-base-100  mx-auto">
+    <div >
+      <div className={`navbar bg-base-100  mx-auto ${pathname === '/' && 'fixed z-50 bg-opacity-45 bg-black text-white'}`}>
         <div className="navbar-start">
           <div className="dropdown mr-3">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
