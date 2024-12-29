@@ -57,7 +57,7 @@ const Footer = () => {
       </footer>
       <aside className=" text-center">
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by <a href="https://github.com/mehefujali">Mehefuj ali</a>
+          Copyright © {new Date().getFullYear()} - All right reserved by <a  target="_blank" href="https://github.com/mehefujali">Mehefuj ali</a>
         </p>
       </aside>
     </div>
