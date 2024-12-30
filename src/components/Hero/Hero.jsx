@@ -12,7 +12,7 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 export default function App() {
   return (
-    <div className="swiper-container">
+    <div className="swiper-container ">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
