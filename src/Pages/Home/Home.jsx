@@ -1,6 +1,7 @@
 import BistroBossAbout from "../../components/BistroBossAbout/BistroBossAbout";
 import FoodSwiper from "../../components/FoodSwiper/FoodSwiper";
 import Hero from "../../components/Hero/Hero";
+import OurMenu from "../../components/OurMenu/OurMenu";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
 
 const Home = () => {
@@ -16,6 +17,9 @@ const Home = () => {
             </div>
             <div>
               <BistroBossAbout/>
+            </div>
+            <div>
+              <OurMenu/>
             </div>
       </div>
   </div>;
