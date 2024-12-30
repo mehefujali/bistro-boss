@@ -24,7 +24,7 @@ const OurMenu = () => {
         subHeading={"Check it out"}
       ></SectionHeading>
       <div className=" container mx-auto">
-        <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 justify-around md:w-fit mx-auto w-11/12">
+        <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 justify-around xl:w-fit mx-auto w-11/12">
             {
                   menus.map(menu => <MenuCard key={menu._id} menu={menu}></MenuCard>)
             }
