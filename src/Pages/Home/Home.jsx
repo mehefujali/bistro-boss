@@ -1,3 +1,4 @@
+import BistroBossAbout from "../../components/BistroBossAbout/BistroBossAbout";
 import FoodSwiper from "../../components/FoodSwiper/FoodSwiper";
 import Hero from "../../components/Hero/Hero";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
@@ -12,6 +13,9 @@ const Home = () => {
             </div>
             <div>
               <FoodSwiper/>
+            </div>
+            <div>
+              <BistroBossAbout/>
             </div>
       </div>
   </div>;
