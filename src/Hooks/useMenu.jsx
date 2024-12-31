@@ -2,22 +2,25 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const useMenu = ({query}) => {
+const useMenu = () => {
   const [menus, setMenu] = useState([]);
+  const [loding, setLoding] = useState(true);
   useEffect(() => {
     axios
       .get(
         "https://raw.githubusercontent.com/ProgrammingHero1/bistro-boss-restaurant-resources/refs/heads/main/menu.json"
       )
       .then((res) => {
-        const popularMenu = res.data.filter(
-          (menu) => menu.category === query
-        );
-        setMenu(popularMenu);
+        setMenu(res.data);
+        setLoding(false)
       });
-  }, [query]);
+      
 
-  return [menus]
+
+
+  }, []);
+
+  return [menus , loding];
 };
 
 export default useMenu;
