@@ -8,10 +8,12 @@ import Homeparallax from "../../components/Homeparallax/Homeparallax";
 import OurMenu from "../../components/OurMenu/OurMenu";
 import Reating from "../../components/Reating/Reating";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
+import { ScrollRestoration } from "react-router-dom";
 
 const Home = () => {
   return (
     <div>
+      <ScrollRestoration/>
       <Helmet>
         <title>Bistro boss | Home</title>
       </Helmet>

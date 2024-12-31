@@ -2,12 +2,12 @@ import { Helmet } from "react-helmet";
 import Cover from "../../Shaired/Cover/Cover";
 import useMenu from "../../Hooks/useMenu";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
-import MenuCard from "../../components/MenuCard/MenuCard";
+
 import MenuItems from "../../Shaired/MenuItems/MenuItems";
+import { ScrollRestoration } from "react-router-dom";
 
 const Menu = () => {
   const [menus] = useMenu();
-  const popularMenu = menus.filter((menu) => menu.category === "popular");
   const soupMenu = menus.filter((menu) => menu.category === "soup");
   const saladMenu = menus.filter((menu) => menu.category === "salad");
   const pizzaMenu = menus.filter((menu) => menu.category === "pizza");
@@ -15,6 +15,7 @@ const Menu = () => {
   const dessertMenu = menus.filter((menu) => menu.category === "dessert");
   return (
     <div>
+      <ScrollRestoration/>
       <Helmet>
         <title>Bistro boss | Menu</title>
       </Helmet>

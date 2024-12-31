@@ -6,13 +6,13 @@ const Nav = () => {
     <div >
       <div className={`navbar   mx-auto md:fixed z-50 md:bg-opacity-45 bg-black text-white`}>
         <div className="navbar-start">
-          <div className="dropdown mr-3">
+          <div className="dropdown mr-3  text-black ">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <img className=" w-5" src="https://i.imgur.com/VpKmN04.png" alt="" />
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] gap-3 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm  dropdown-content bg-base-100 rounded z-50 p-5 bg-opacity-65 backdrop-blur-md gap-3 mt-3 w-52 shadow"
             >
               <NavLink>Home</NavLink>
               <NavLink>Contact Us</NavLink>
