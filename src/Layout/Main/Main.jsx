@@ -10,7 +10,7 @@ const Main = () => {
           <Nav />
         </nav>
       </div>
-      <div className=" min-h-[calc(100vh-257px)]">
+      <div className=" overflow-hidden bg-white min-h-[calc(100vh-257px)]">
         <Outlet></Outlet>
       </div>
       <div>
