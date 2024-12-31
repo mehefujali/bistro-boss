@@ -5,6 +5,7 @@ import FoodSwiper from "../../components/FoodSwiper/FoodSwiper";
 import Hero from "../../components/Hero/Hero";
 import Homeparallax from "../../components/Homeparallax/Homeparallax";
 import OurMenu from "../../components/OurMenu/OurMenu";
+import Reating from "../../components/Reating/Reating";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
 
 const Home = () => {
@@ -32,6 +33,9 @@ const Home = () => {
             </div>
             <div>
               <Homeparallax/>
+            </div>
+            <div>
+              <Reating/>
             </div>
       </div>
   </div>;
