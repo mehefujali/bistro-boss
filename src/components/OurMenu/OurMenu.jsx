@@ -33,6 +33,7 @@ const OurMenu = () => {
             <button className=" p-3 px-6 rounded-md border-b-4 border-black w-fit ">View Full  Menu</button>
         </div>
       </div>
+      
     </div>
   );
 };
