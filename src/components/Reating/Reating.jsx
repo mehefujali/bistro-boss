@@ -36,10 +36,11 @@ const Reating = () => {
             autoplay={{
               delay: 3000,
             }}
+            loop={true}
           >
             {reviews.map((review) => (
               <SwiperSlide key={review._id}>
-                <div className=" w-11/12 mx-auto flex flex-col items-center gap-2">
+                <div className=" w-9/12 md:w-11/12 mx-auto flex flex-col items-center gap-2">
                   <Rating
                     emptySymbol=<CiStar className=" text-2xl  text-yellow-500" />
                     fullSymbol=<FaStar className=" text-2xl text-yellow-500" />
@@ -51,7 +52,9 @@ const Reating = () => {
                     <BiSolidQuoteLeft />
                   </span>
                   <p>{review.details}</p>
-                  <h1 className=" text-2xl md:text-3xl text-yellow-500">{review.name}</h1>
+                  <h1 className=" text-2xl md:text-3xl text-yellow-500">
+                    {review.name}
+                  </h1>
                 </div>
               </SwiperSlide>
             ))}
