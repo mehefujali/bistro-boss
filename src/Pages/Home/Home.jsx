@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import BistroBossAbout from "../../components/BistroBossAbout/BistroBossAbout";
 import CallUs from "../../components/CallUs/CallUs";
 import ChefRecommends from "../../components/ChefRecommends/ChefRecommends";
@@ -9,36 +10,43 @@ import Reating from "../../components/Reating/Reating";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
 
 const Home = () => {
-  return <div>
-
+  return (
+    <div>
+      <Helmet>
+        <title>Bistro boss | Home</title>
+      </Helmet>
       <div className="">
-            <Hero/>
-            <div>
-              <SectionHeading heading={'ORDER ONLINE'} subHeading={'From 11:00am to 10:00pm'}></SectionHeading>
-            </div>
-            <div>
-              <FoodSwiper/>
-            </div>
-            <div>
-              <BistroBossAbout/>
-            </div>
-            <div>
-              <OurMenu/>
-            </div>
-            <div>
-              <CallUs></CallUs>
-            </div>
-            <div>
-              <ChefRecommends/>
-            </div>
-            <div>
-              <Homeparallax/>
-            </div>
-            <div>
-              <Reating/>
-            </div>
+        <Hero />
+        <div>
+          <SectionHeading
+            heading={"ORDER ONLINE"}
+            subHeading={"From 11:00am to 10:00pm"}
+          ></SectionHeading>
+        </div>
+        <div>
+          <FoodSwiper />
+        </div>
+        <div>
+          <BistroBossAbout />
+        </div>
+        <div>
+          <OurMenu />
+        </div>
+        <div>
+          <CallUs></CallUs>
+        </div>
+        <div>
+          <ChefRecommends />
+        </div>
+        <div>
+          <Homeparallax />
+        </div>
+        <div>
+          <Reating />
+        </div>
       </div>
-  </div>;
+    </div>
+  );
 };
 
 export default Home;

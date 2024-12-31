@@ -10,7 +10,7 @@ const Main = () => {
           <Nav />
         </nav>
       </div>
-      <div className=" min-h-[calc(100vh-324px)]">
+      <div className=" min-h-[calc(100vh-257px)]">
         <Outlet></Outlet>
       </div>
       <div>
@@ -20,4 +20,9 @@ const Main = () => {
   );
 };
 
+
+//        _
+//        .__(.)< (MEOW)
+//         \___)   
+//  ~~~~~~~~~~~~~~~~~~
 export default Main;

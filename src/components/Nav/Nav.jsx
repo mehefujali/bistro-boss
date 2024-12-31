@@ -1,10 +1,10 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 
 const Nav = () => {
-  const {pathname} = useLocation()
+ 
   return (
     <div >
-      <div className={`navbar bg-base-100  mx-auto ${pathname === '/' && 'md:fixed z-50 md:bg-opacity-45 bg-black text-white'}`}>
+      <div className={`navbar   mx-auto md:fixed z-50 md:bg-opacity-45 bg-black text-white`}>
         <div className="navbar-start">
           <div className="dropdown mr-3">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -17,7 +17,7 @@ const Nav = () => {
               <NavLink>Home</NavLink>
               <NavLink>Contact Us</NavLink>
               <NavLink>Dashboard</NavLink>
-              <NavLink>Our Menu</NavLink>
+              <NavLink to='/menu'>Our Menu</NavLink>
               <NavLink>Our shop</NavLink>
             </ul>
           </div>
@@ -36,7 +36,7 @@ const Nav = () => {
             <NavLink>Home</NavLink>
             <NavLink>Contact Us</NavLink>
             <NavLink>Dashboard</NavLink>
-            <NavLink>Our Menu</NavLink>
+            <NavLink to='/menu'>Our Menu</NavLink>
             <NavLink>Our shop</NavLink>
           </ul>
           <div>

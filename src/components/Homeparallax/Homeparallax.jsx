@@ -4,7 +4,7 @@ const Homeparallax = () => {
   return (
     <div className=" my-14">
       <div
-        className="container mx-auto   bg-cover bg-fixed p-7 md:p-20 "
+        className="container mx-auto    bg-cover bg-fixed p-7 md:p-20 "
         id="parallax-home-bg"
       >
         <div className=" text-white">

@@ -40,7 +40,7 @@ const Reating = () => {
           >
             {reviews.map((review) => (
               <SwiperSlide key={review._id}>
-                <div className=" w-9/12 md:w-11/12 mx-auto flex flex-col items-center gap-2">
+                <div className=" w-9/12 md:w-11/12 mx-auto  flex flex-col items-center gap-2">
                   <Rating
                     emptySymbol=<CiStar className=" text-2xl  text-yellow-500" />
                     fullSymbol=<FaStar className=" text-2xl text-yellow-500" />
