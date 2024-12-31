@@ -3,6 +3,7 @@ import CallUs from "../../components/CallUs/CallUs";
 import ChefRecommends from "../../components/ChefRecommends/ChefRecommends";
 import FoodSwiper from "../../components/FoodSwiper/FoodSwiper";
 import Hero from "../../components/Hero/Hero";
+import Homeparallax from "../../components/Homeparallax/Homeparallax";
 import OurMenu from "../../components/OurMenu/OurMenu";
 import SectionHeading from "../../components/SectionHeading/SectionHeading";
 
@@ -28,6 +29,9 @@ const Home = () => {
             </div>
             <div>
               <ChefRecommends/>
+            </div>
+            <div>
+              <Homeparallax/>
             </div>
       </div>
   </div>;
