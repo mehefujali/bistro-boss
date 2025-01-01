@@ -40,7 +40,7 @@ const Nav = () => {
             <NavLink to="/ourshop/salad">Our shop</NavLink>
           </ul>
           <div>
-            <button>Login</button>
+            <Link to='/login' className=" ml-8 uppercase">Login</Link>
           </div>
         </div>
       </div>

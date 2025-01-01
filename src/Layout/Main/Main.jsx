@@ -1,21 +1,25 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 
 const Main = () => {
+  const {pathname} = useLocation()
+  const withOutNavFooter = pathname.includes('login')
+  console.log(pathname)
+  console.log(withOutNavFooter)
   return (
     <div>
-      <div className=" ">
+      {withOutNavFooter||<div className=" ">
         <nav className="">
           <Nav />
         </nav>
-      </div>
-      <div className=" overflow-hidden bg-white min-h-[calc(100vh-257px)]">
+      </div>}
+      
         <Outlet></Outlet>
-      </div>
-      <div>
+     
+      {withOutNavFooter||<div>
         <Footer />
-      </div>
+      </div>}
     </div>
   );
 };

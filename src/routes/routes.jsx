@@ -3,6 +3,7 @@ import Main from "../Layout/Main/Main";
 import Home from "../Pages/Home/Home";
 import Menu from "../Pages/Menu/Menu";
 import OurShop from "../Pages/OurShop/OurShop";
+import Login from "../auth/Login/Login";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         path: 'ourshop/:category' ,
         element: <OurShop/>
+      },
+      {
+        path :'login' ,
+        element : <Login/>
       }
     ],
   },
