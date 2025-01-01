@@ -1,4 +1,22 @@
+import { useEffect, useState } from "react";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+
 const Login = () => {
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+  const handleCaptchaValidation = (e) => {
+    const user_input = e.target.value;
+    if (validateCaptcha(user_input) === true) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   return (
     <div
       className=" h-[100vh] w-[100vw]  flex items-center justify-center bg-cover"
@@ -45,20 +63,19 @@ const Login = () => {
                 type="text"
                 name=""
                 id=""
-                className=" select-none w-full input  flex items-center focus:outline-none border-gray-400 rounded"
+                className=" select-none w-full   flex items-center focus:outline-none border-gray-400 rounded"
               >
-                afddf{" "}
+                <LoadCanvasTemplate />
               </div>
-              <span className=" cursor-pointer text-blue-500">Reload captcha</span>
             </label>
             <input
               type="text"
               placeholder="Type here"
-              name=""
-              id="password"
+              name="captcha"
+              id=""
               className=" w-full input focus:outline-none border-gray-400 rounded"
             />
-            <button className="btn w-full bg-[#D1A054B3] text-white rounded">
+            <button className="btn w-full disabled:cursor-not-allowed bg-[#D1A054B3] text-white rounded">
               Sign in
             </button>
           </form>
