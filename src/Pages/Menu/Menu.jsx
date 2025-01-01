@@ -43,7 +43,7 @@ const Menu = () => {
             img="https://i.imgur.com/fIh1oPq.jpg"
           ></Cover>
 
-          <MenuItems items={dessertMenu}></MenuItems>
+          <MenuItems items={dessertMenu} title={'desserts'}></MenuItems>
 
           {/* pizza  */}
 
@@ -53,7 +53,7 @@ const Menu = () => {
             img="https://i.imgur.com/tx3fxyK.jpg"
           ></Cover>
 
-          <MenuItems items={pizzaMenu}></MenuItems>
+          <MenuItems items={pizzaMenu} title={'pizza'}></MenuItems>
           {/* SALADS  */}
 
           <Cover
@@ -62,7 +62,7 @@ const Menu = () => {
             img="https://i.imgur.com/o08yvV1.jpg"
           ></Cover>
 
-          <MenuItems items={saladMenu}></MenuItems>
+          <MenuItems items={saladMenu} title={'salads'}></MenuItems>
           {/* SOUPS  */}
 
           <Cover
@@ -71,7 +71,7 @@ const Menu = () => {
             img="https://i.imgur.com/YO9ybwF.jpg"
           ></Cover>
 
-          <MenuItems items={soupMenu}></MenuItems>
+          <MenuItems items={soupMenu} title={'soups'}></MenuItems>
         </div>
       </div>
     </div>

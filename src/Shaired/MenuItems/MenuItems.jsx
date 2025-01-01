@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import MenuCard from "../../components/MenuCard/MenuCard";
 
-const MenuItems = ({items}) => {
+const MenuItems = ({items,title}) => {
       return (
             <div>
                 <div className=" container mx-auto my-14">
@@ -11,9 +12,9 @@ const MenuItems = ({items}) => {
               ))}
             </div>
             <div className=" w-full flex mt-7 items-center justify-center">
-              <button className=" p-3 px-6 rounded-md border-b-4 border-black w-fit ">
+              <Link to={`/ourshop/${title}`} className=" p-3 px-6 rounded-md border-b-4 border-black w-fit ">
                 ORDER YOUR FAVOURITE FOOD
-              </button>
+              </Link>
             </div>
           </div>   
             </div>

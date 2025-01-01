@@ -18,7 +18,7 @@ const Nav = () => {
               <NavLink>Contact Us</NavLink>
               <NavLink>Dashboard</NavLink>
               <NavLink to='/menu'>Our Menu</NavLink>
-              <NavLink>Our shop</NavLink>
+              <NavLink to="/ourshop">Our shop</NavLink>
             </ul>
           </div>
           <Link to="/" className=" flex items-start md:items-baseline gap-1">
@@ -37,7 +37,7 @@ const Nav = () => {
             <NavLink>Contact Us</NavLink>
             <NavLink>Dashboard</NavLink>
             <NavLink to='/menu'>Our Menu</NavLink>
-            <NavLink>Our shop</NavLink>
+            <NavLink to="/ourshop/salad">Our shop</NavLink>
           </ul>
           <div>
             <button>Login</button>
