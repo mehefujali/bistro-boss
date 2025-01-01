@@ -8,7 +8,7 @@ const useMenu = () => {
   useEffect(() => {
     axios
       .get(
-        "https://raw.githubusercontent.com/ProgrammingHero1/bistro-boss-restaurant-resources/refs/heads/main/menu.json"
+        `${import.meta.env.VITE_API_URL}/menu`
       )
       .then((res) => {
         setMenu(res.data);
