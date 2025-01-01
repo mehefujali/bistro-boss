@@ -1,17 +1,19 @@
 const Login = () => {
   return (
-    <div 
-    className=" h-[100vh] w-[100vw]  flex items-center justify-center bg-cover"
-    style={{backgroundImage:'url(https://i.imgur.com/54Ky7iG.png)'}}
-    
+    <div
+      className=" h-[100vh] w-[100vw]  flex items-center justify-center bg-cover"
+      style={{ backgroundImage: "url(https://i.imgur.com/54Ky7iG.png)" }}
     >
-      <div className=" w-fit h-fit flex items-center gap-4 border shadow-lg p-8 lg:p-20 2xl:p-28 rounded shadow-gray-500">
+      <div className=" w-11/12 lg:w-fit h-fit flex flex-col md:flex-row items-center gap-4 border shadow-lg p-8 lg:p-20 2xl:p-28 rounded shadow-gray-500 backdrop-blur-[2px] ">
         <div>
           <img src="https://i.imgur.com/dKZiHzX.png" alt="" />
         </div>
-        <div className=" w-6/12">
+        <div className=" md:w-6/12">
           <form className=" flex w-full flex-col gap-1 items-center">
-            <label htmlFor="email" className=" w-full flex flex-col gap-1 items-start">
+            <label
+              htmlFor="email"
+              className=" w-full flex flex-col gap-1 items-start"
+            >
               <span>Email : </span>
               <input
                 type="text"
@@ -31,31 +33,34 @@ const Login = () => {
                 placeholder="Enter your password"
                 name=""
                 id="password"
-                className=" w-full input focus:outline-none border-gray-400 rounded"
+                className=" w-full input focus:outline-none  border-gray-400 rounded"
               />
             </label>
-            <label 
-            className=" w-full flex flex-col gap-1 my-2 items-start"
-            htmlFor="">
-            <div 
-              readOnly
-              type="text"
-              
-              name=""
-              id=""
-              className=" select-none w-full input  flex items-center focus:outline-none border-gray-400 rounded"
-            >afddf </div>
-            <button className=" text-blue-500">Reload captcha</button>
+            <label
+              className=" w-full flex flex-col gap-1 my-2 items-start"
+              htmlFor=""
+            >
+              <div
+                readOnly
+                type="text"
+                name=""
+                id=""
+                className=" select-none w-full input  flex items-center focus:outline-none border-gray-400 rounded"
+              >
+                afddf{" "}
+              </div>
+              <span className=" cursor-pointer text-blue-500">Reload captcha</span>
             </label>
             <input
-              
               type="text"
-               placeholder="Type here"
+              placeholder="Type here"
               name=""
               id="password"
               className=" w-full input focus:outline-none border-gray-400 rounded"
             />
-            <button className="btn w-full bg-[#D1A054B3] text-white rounded">Sign in</button>
+            <button className="btn w-full bg-[#D1A054B3] text-white rounded">
+              Sign in
+            </button>
           </form>
         </div>
       </div>
