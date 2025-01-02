@@ -1,20 +1,59 @@
 import { useContext } from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn  ,emailSignUp , user } = useContext(AuthContext);
   const handleGooogleSignIn = () => {
     googleSignIn()
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+         toast.success('Sign in success')
       })
-      .catch(() => {});
+      .catch(() => {
+            toast.error('Google login failed. Please try again.') 
+      });
   };
+
+  const {
+    register,
+    handleSubmit,
+  
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+      emailSignUp(data.email , data.password)
+      .then(()=> {
+            toast.success('Account created successfully!')
+      })
+      .catch (err => {
+            if(err.message === 'Firebase: Error (auth/email-already-in-use).') {
+                  toast.error('Email is already in use.')
+            }
+            else{
+                  toast.error('Sign-up failed. Please try again.')
+            }
+      })
+  };
+
+  console.log(user)
+
+  if(user){
+    return   <Navigate to="/"></Navigate>
+  }
+
+
+ 
   return (
     <div>
+      <Helmet>
+            <title>Bistro | Register</title>
+      </Helmet>
       <div
         className=" h-[100vh] w-[100vw]  flex items-center justify-center bg-cover"
         style={{ backgroundImage: "url(https://i.imgur.com/54Ky7iG.png)" }}
@@ -24,19 +63,26 @@ const Register = () => {
             <img src="https://i.imgur.com/dKZiHzX.png" alt="" />
           </div>
           <div className=" md:w-6/12">
-            <form className=" flex w-full flex-col gap-1 items-center">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className=" flex w-full flex-col gap-1 items-center"
+            >
               <label
                 htmlFor="name"
                 className=" w-full flex flex-col gap-1 items-start"
               >
                 <span>Name : </span>
                 <input
+                  {...register("name", { required: true })}
                   type="text"
                   placeholder="Enter your Name"
                   name="name"
                   id="name"
                   className=" w-full input focus:outline-none border-gray-400 rounded"
                 />
+                {errors.name && (
+                  <span className="text-red-500">Name is required</span>
+                )}
               </label>
               <label
                 htmlFor="email"
@@ -44,12 +90,16 @@ const Register = () => {
               >
                 <span>Email : </span>
                 <input
+                  {...register("email", { required: true })}
                   type="text"
                   placeholder="Enter your email"
                   name="email"
                   id="email"
                   className=" w-full input focus:outline-none border-gray-400 rounded"
                 />
+                {errors.email && (
+                  <span className="text-red-500">Email is required</span>
+                )}
               </label>
               <label
                 htmlFor="password"
@@ -57,12 +107,30 @@ const Register = () => {
               >
                 <span>Password : </span>
                 <input
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                  })}
                   type="password"
                   placeholder="Enter your password"
                   name="password"
                   id="password"
                   className=" w-full input focus:outline-none  border-gray-400 rounded"
                 />
+                {errors?.password?.type === "required" && (
+                  <span className="text-red-500">Password is required</span>
+                )}
+                {errors?.password?.type === "minLength" && (
+                  <span className="text-red-500">
+                    Input must be at least 6 characters long.
+                  </span>
+                )}
+                {errors?.password?.type === "maxLength" && (
+                  <span className="text-red-500">
+                    Input must be between 6 and 20 characters long.
+                  </span>
+                )}
               </label>
               <button className="btn mt-4 w-full disabled:cursor-not-allowed bg-[#D1A054B3] text-white rounded">
                 Sign Up
@@ -82,7 +150,10 @@ const Register = () => {
                   {" "}
                   <FaFacebookF />
                 </div>
-                <div onClick={handleGooogleSignIn} className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+                <div
+                  onClick={handleGooogleSignIn}
+                  className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit"
+                >
                   {" "}
                   <FaGoogle />
                 </div>

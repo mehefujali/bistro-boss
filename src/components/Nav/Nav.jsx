@@ -1,14 +1,22 @@
-import { Link, NavLink} from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Nav = () => {
- 
+  const { user, signOutUser } = useContext(AuthContext);
   return (
-    <div >
-      <div className={`navbar   mx-auto md:fixed z-50 md:bg-opacity-45 bg-black text-white`}>
+    <div>
+      <div
+        className={`navbar   mx-auto md:fixed z-50 md:bg-opacity-45 bg-black text-white`}
+      >
         <div className="navbar-start">
           <div className="dropdown mr-3  text-black ">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <img className=" w-5" src="https://i.imgur.com/VpKmN04.png" alt="" />
+              <img
+                className=" w-5"
+                src="https://i.imgur.com/VpKmN04.png"
+                alt=""
+              />
             </div>
             <ul
               tabIndex={0}
@@ -17,7 +25,7 @@ const Nav = () => {
               <NavLink>Home</NavLink>
               <NavLink>Contact Us</NavLink>
               <NavLink>Dashboard</NavLink>
-              <NavLink to='/menu'>Our Menu</NavLink>
+              <NavLink to="/menu">Our Menu</NavLink>
               <NavLink to="/ourshop">Our shop</NavLink>
             </ul>
           </div>
@@ -27,7 +35,9 @@ const Nav = () => {
               src="https://i.imgur.com/dOyMJIH.png"
               alt=""
             />
-            <span className=" text-xl  md:text-2xl font-bold hidden md:flex">Bistro Boss</span>
+            <span className=" text-xl  md:text-2xl font-bold hidden md:flex">
+              Bistro Boss
+            </span>
           </Link>
         </div>
 
@@ -36,12 +46,28 @@ const Nav = () => {
             <NavLink>Home</NavLink>
             <NavLink>Contact Us</NavLink>
             <NavLink>Dashboard</NavLink>
-            <NavLink to='/menu'>Our Menu</NavLink>
+            <NavLink to="/menu">Our Menu</NavLink>
             <NavLink to="/ourshop/salad">Our shop</NavLink>
           </ul>
-          <div>
-            <Link to='/login' className=" ml-8 uppercase">Login</Link>
-          </div>
+          {user ? (
+            <div>
+              {" "}
+              <button
+                onClick={() => {
+                  signOutUser();
+                }}
+                className=" ml-8 uppercase"
+              >
+                Logout
+              </button>{" "}
+            </div>
+          ) : (
+            <div>
+              <Link to="/login" className=" ml-8 uppercase">
+                Login
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

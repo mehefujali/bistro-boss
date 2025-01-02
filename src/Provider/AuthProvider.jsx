@@ -1,36 +1,54 @@
 /* eslint-disable react/prop-types */
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { createContext } from "react";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.init";
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  const googleProvider = new GoogleAuthProvider();
+  const googleSignIn = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  const emailSignUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const emailLogin = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+  const signOutUser = () =>{
+      signOut(auth)
       
-      const googleProvider  = new GoogleAuthProvider()
-      const googleSignIn =  () => {
-            return signInWithPopup(auth , googleProvider)
-      }
-      const emailSignUp = (email,password) => {
-            return createUserWithEmailAndPassword(auth , email , password)
-      }
-      const emailLogin = (email , password)  =>{
-            return signInWithEmailAndPassword(auth,email,password)
-      }
-   
-      const authInfo = {
-            googleSignIn ,
-            emailSignUp ,
-            emailLogin
+  }
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
 
-      }
-      return (
-           <AuthContext.Provider  value={authInfo}>
-            {
-                  children
-            }
-           </AuthContext.Provider>
-      );
+    return () => {
+      unSubscribe();
+    };
+  }, []);
+
+  const authInfo = {
+    googleSignIn,
+    emailSignUp,
+    emailLogin,
+    user,
+    signOutUser,
+  };
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
 };
 
-export {AuthContext , AuthProvider}
+export { AuthContext, AuthProvider };

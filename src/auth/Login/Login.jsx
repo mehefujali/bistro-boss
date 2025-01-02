@@ -1,16 +1,17 @@
 import { useContext, useEffect } from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   // validateCaptcha,
 } from "react-simple-captcha";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
-  const {googleSignIn} = useContext(AuthContext)
+  const {googleSignIn , user} = useContext(AuthContext)
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -33,12 +34,17 @@ const Login = () => {
 
     })
   }
-  
+  if(user){
+    return   <Navigate to="/"></Navigate>
+  }
   return (
     <div
       className=" h-[100vh] w-[100vw]  flex items-center justify-center bg-cover"
       style={{ backgroundImage: "url(https://i.imgur.com/54Ky7iG.png)" }}
     >
+      <Helmet>
+            <title>Bistro | Login</title>
+      </Helmet>
       <div className=" w-11/12 lg:w-fit h-fit flex flex-col md:flex-row items-center gap-4 border shadow-lg p-8 lg:p-20 2xl:p-28 rounded shadow-gray-500 backdrop-blur-[2px] ">
         <div>
           <img src="https://i.imgur.com/dKZiHzX.png" alt="" />
