@@ -47,6 +47,9 @@ const Login = () => {
         if (err.message === "Firebase: Error (auth/invalid-credential).") {
           toast.error("Invalid email or password. Please try again.");
         }
+        else{
+          toast.error('Login failed. Please try again.')
+        }
       });
   };
 
@@ -147,7 +150,12 @@ const Login = () => {
             </span>
             <p>or sign with</p>
             <div className=" flex w-fit gap-2 mx-auto mt-3">
-              <div className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+              <div 
+              onClick={()=>{
+                toast.error('Login failed. Please try again.')
+             }}
+              
+              className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
                 {" "}
                 <FaFacebookF />
               </div>
@@ -158,7 +166,9 @@ const Login = () => {
                 {" "}
                 <FaGoogle />
               </div>
-              <div className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+              <div onClick={()=>{
+                 toast.error('Login failed. Please try again.')
+              }} className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
                 {" "}
                 <IoLogoGithub />
               </div>

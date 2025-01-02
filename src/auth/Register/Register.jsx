@@ -147,7 +147,12 @@ const Register = () => {
               </span>
               <p>Or sign up with</p>
               <div className=" flex w-fit gap-2 mx-auto mt-3">
-                <div className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+                <div
+                onClick={()=>{
+                  toast.error('Login failed. Please try again.')
+               }}
+                
+                className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
                   {" "}
                   <FaFacebookF />
                 </div>
@@ -158,7 +163,11 @@ const Register = () => {
                   {" "}
                   <FaGoogle />
                 </div>
-                <div className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+                <div 
+                onClick={()=>{
+                  toast.error('Login failed. Please try again.')
+               }}
+                className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
                   {" "}
                   <IoLogoGithub />
                 </div>

@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { HiOutlineShoppingCart } from "react-icons/hi";
 
 const Nav = () => {
   const { user, signOutUser } = useContext(AuthContext);
   return (
     <div>
       <div
-        className={`navbar   mx-auto md:fixed z-50 md:bg-opacity-45 bg-black text-white`}
+        className={`navbar  items-center  mx-auto md:fixed z-50 md:bg-opacity-45 bg-black text-white`}
       >
         <div className="navbar-start">
           <div className="dropdown mr-3  text-black ">
@@ -42,12 +43,22 @@ const Nav = () => {
         </div>
 
         <div className="navbar-end">
-          <ul className="menu menu-horizontal px-1 hidden lg:flex gap-4 uppercase">
+          <ul className="menu menu-horizontal items-center px-1 hidden lg:flex gap-4 uppercase">
             <NavLink>Home</NavLink>
             <NavLink>Contact Us</NavLink>
             <NavLink>Dashboard</NavLink>
             <NavLink to="/menu">Our Menu</NavLink>
             <NavLink to="/ourshop/salad">Our shop</NavLink>
+            <Link>
+              <div className="indicator">
+                <span className="indicator-item badge bg-yellow-500 text-xs">
+                  0
+                </span>
+                <div className="  rounded-full p-1 ">
+                  <HiOutlineShoppingCart className=" text-2xl" />
+                </div>
+              </div>
+            </Link>
           </ul>
           {user ? (
             <div>

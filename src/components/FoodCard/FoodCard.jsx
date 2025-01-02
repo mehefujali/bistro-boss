@@ -2,6 +2,9 @@
 
 const FoodCard = ({recommend}) => {
       const { name, image, price, recipe } =  recommend
+      const handleAddtoCart = (item) => {
+            console.log(item)
+      }
       return (
             <div>
                   <div className="  w-full h-full bg-gray-100">
@@ -11,7 +14,7 @@ const FoodCard = ({recommend}) => {
                               <p className=" text-lg text-green-600">${price}</p>
                               <p className=" ">{recipe}</p>
                               <div className=" flex justify-center">
-                              <button className=" p-3 px-6 rounded-md border-b-4 text-yellow-600  border-yellow-600 w-fit bg-gray-200 ">Add to cart</button>
+                              <button onClick={()=>handleAddtoCart(recommend)} className=" p-3 px-6 rounded-md border-b-4 text-yellow-600  border-yellow-600 w-fit bg-gray-200 ">Add to cart</button>
                               </div>
                         </div>
                   </div>
