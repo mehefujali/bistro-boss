@@ -12,7 +12,7 @@ const OurShop = () => {
       const categories = [ 'salad' , 'pizza','soup', 'desserts' , 'drinks' ]
       const initialIndex = categories.indexOf(category)
       const [tabIndex, setTabIndex] = useState(initialIndex);
-  console.log(tabIndex);
+
   const [menus] = useMenu();
   const soupMenu = menus.filter((menu) => menu.category === "soup");
   const saladMenu = menus.filter((menu) => menu.category === "salad");

@@ -55,10 +55,12 @@ const Login = () => {
 
   const handleGooogleSignIn = () => {
     googleSignIn()
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        toast.success('Sign in success')
       })
-      .catch(() => {});
+      .catch(() => {
+        toast.error('Google login failed. Please try again.') 
+      });
   };
 
   if (user) {

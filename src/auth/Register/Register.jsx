@@ -42,7 +42,7 @@ const Register = () => {
       })
   };
 
-  console.log(user)
+ 
 
   if(user){
     return   <Navigate to={state||"/"}></Navigate>

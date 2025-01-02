@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 const Main = () => {
   const { pathname } = useLocation();
 
-  console.log(pathname);
+
 
   return (
     <div>
