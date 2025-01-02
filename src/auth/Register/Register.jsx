@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 
 const Register = () => {
+      const {state} = useLocation()
   const { googleSignIn  ,emailSignUp , user } = useContext(AuthContext);
   const handleGooogleSignIn = () => {
     googleSignIn()
@@ -44,7 +45,7 @@ const Register = () => {
   console.log(user)
 
   if(user){
-    return   <Navigate to="/"></Navigate>
+    return   <Navigate to={state||"/"}></Navigate>
   }
 
 
@@ -139,7 +140,7 @@ const Register = () => {
             <div className=" mt-2 text-center">
               <span className=" text-[#D1A054]">
                 Already registered?
-                <Link className=" font-semibold" to="/login">
+                <Link  state={state} className=" font-semibold" to="/login">
                   {" "}
                   Go to log in
                 </Link>

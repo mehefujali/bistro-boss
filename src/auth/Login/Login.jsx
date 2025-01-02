@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -11,6 +11,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
 
 const Login = () => {
+  const {state} = useLocation()
   const {googleSignIn , user} = useContext(AuthContext)
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -35,7 +36,7 @@ const Login = () => {
     })
   }
   if(user){
-    return   <Navigate to="/"></Navigate>
+    return   <Navigate to={state||"/"}></Navigate>
   }
   return (
     <div
@@ -104,7 +105,7 @@ const Login = () => {
             
           </form>
           <div className=" mt-2 text-center">
-            <span className=" text-[#D1A054]" >New here?<Link className=" font-semibold" 
+            <span className=" text-[#D1A054]" >New here?<Link state={state} className=" font-semibold" 
             to='/register'> Create a New Account</Link></span>
             <p>or sign with</p>
             <div className=" flex w-fit gap-2 mx-auto mt-3"> 
