@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { HiOutlineShoppingCart } from "react-icons/hi";
+import useCart from "../../Hooks/useCart";
 
 const Nav = () => {
   const { user, signOutUser } = useContext(AuthContext);
+  const [cart] = useCart()
+  
   return (
     <div>
       <div
@@ -52,7 +55,7 @@ const Nav = () => {
             <Link>
               <div className="indicator">
                 <span className="indicator-item badge bg-yellow-500 text-xs">
-                  0
+                  {cart.length}
                 </span>
                 <div className="  rounded-full p-1 ">
                   <HiOutlineShoppingCart className=" text-2xl" />
