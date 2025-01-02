@@ -1,22 +1,39 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
+import { FaFacebookF, FaGoogle } from "react-icons/fa";
+import { IoLogoGithub } from "react-icons/io";
+import { Link } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
-  validateCaptcha,
+  // validateCaptcha,
 } from "react-simple-captcha";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const {googleSignIn} = useContext(AuthContext)
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
-  const handleCaptchaValidation = (e) => {
-    const user_input = e.target.value;
-    if (validateCaptcha(user_input) === true) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  // const handleCaptchaValidation = (e) => {
+  //   const user_input = e.target.value;
+  //   if (validateCaptcha(user_input) === true) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // };
+  
+  
+  const handleGooogleSignIn = ()=> {
+    googleSignIn()
+    .then(res => {
+         console.log(res)
+    })
+    .catch(()=>{
+
+    })
+  }
+  
   return (
     <div
       className=" h-[100vh] w-[100vw]  flex items-center justify-center bg-cover"
@@ -78,7 +95,20 @@ const Login = () => {
             <button className="btn w-full disabled:cursor-not-allowed bg-[#D1A054B3] text-white rounded">
               Sign in
             </button>
+            
           </form>
+          <div className=" mt-2 text-center">
+            <span className=" text-[#D1A054]" >New here?<Link className=" font-semibold" 
+            to='/register'> Create a New Account</Link></span>
+            <p>or sign with</p>
+            <div className=" flex w-fit gap-2 mx-auto mt-3"> 
+              
+              <div  className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit"> <FaFacebookF /></div>
+              <div onClick={handleGooogleSignIn} className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit"> <FaGoogle /></div>
+              <div className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit"> <IoLogoGithub /></div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>
