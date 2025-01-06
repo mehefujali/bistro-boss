@@ -8,7 +8,7 @@ import Register from "../auth/Register/Register";
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
-
+import PrivateRoute from "../Private/PrivateRoute";
 
 const routes = createBrowserRouter([
   {
@@ -38,18 +38,22 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path : '/dashboard' ,
-    element : <Dashboard/>,
-    children : [
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path : '/dashboard/cart' ,
-        element : <Cart/>
+        path: "/dashboard/cart",
+        element: <Cart />,
       },
       {
-        path: '/dashboard/all-users',
-        element : <AllUsers/>
-      }
-    ]
-  }
+        path: "/dashboard/all-users",
+        element: <AllUsers />,
+      },
+    ],
+  },
 ]);
 export default routes;

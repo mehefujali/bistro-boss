@@ -16,7 +16,7 @@ const AllUsers = () => {
     },
   });
 
-  const handleDeleteUser = async (id) => {
+  const handleDeleteUser = async (user) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -27,30 +27,29 @@ const AllUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const { data } = await axiosSecure.delete(`/users/${id}`);
+        const { data } = await axiosSecure.delete(`/users/${user?._id}`);
 
         if (data.deletedCount) {
           refetch();
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
-            icon: "success",
-          });
+          toast.success(`${user?.name} deleted`)
         }
       }
     });
   };
-  
 
   const handleMakeAdmin = async (user) => {
-           axiosSecure.patch(`/user/admin/${user?._id}`)
-           .then(res =>{
-            console.log(res.data)
-            if(res.data.modifi){
-                  toast.success(`${user.name} Now admin`)
-            }
-           })
-  }
+    axiosSecure
+      .patch(`/user/admin/${user?._id}`)
+
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          toast.success(`${user.name} is admin now`);
+
+        }
+        refetch()
+      });
+      
+  };
 
   return (
     <div>
@@ -67,7 +66,7 @@ const AllUsers = () => {
         <div className="overflow-x-auto">
           <table className="table table-zebra">
             {/* head */}
-            <thead>
+            <thead className="bg-[#D1A054] text-lg text-white">
               <tr>
                 <th></th>
                 <th>Name</th>
@@ -83,12 +82,15 @@ const AllUsers = () => {
                   <th>{idx + 1}</th>
                   <td>{user?.name}</td>
                   <td>{user?.email}</td>
-                  <td className=" text-2xl ">
-                    <FaUsersCog onClick={()=>handleMakeAdmin(user)} className="cursor-pointer" />
+                  <td className="  ">
+                    {user.role === "admin" ? 'admin' :<FaUsersCog
+                      onClick={() => handleMakeAdmin(user)}
+                      className="cursor-pointer text-2xl"
+                    />}
                   </td>
                   <td>
                     <div
-                      onClick={() => handleDeleteUser(user._id)}
+                      onClick={() => handleDeleteUser(user)}
                       className=" w-fit h-fit p-2 cursor-pointer bg-red-500 rounded-full"
                     >
                       <MdDelete className="text-lg  text-white " />

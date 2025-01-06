@@ -7,9 +7,11 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import "./dashboard.css";
 import { ImSpoonKnife } from "react-icons/im";
 import { TfiMenuAlt } from "react-icons/tfi";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin = true;
+  const [isAdmin ]= useAdmin();
+
   return (
     <div className=" grid grid-cols-12 h-screen">
       <div className=" h-full col-span-2 p-7 bg-[#D1A054] navlinks-dashboard">
