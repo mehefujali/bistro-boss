@@ -6,10 +6,12 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
       const {state} = useLocation()
-  const { googleSignIn  ,emailSignUp , user } = useContext(AuthContext);
+  const { googleSignIn  ,emailSignUp , user , updateUser , setUser } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic()
   const handleGooogleSignIn = () => {
     googleSignIn()
       .then(() => {
@@ -30,7 +32,22 @@ const Register = () => {
   const onSubmit = (data) => {
       emailSignUp(data.email , data.password)
       .then(()=> {
-            toast.success('Account created successfully!')
+            updateUser({displayName: data.name})
+            .then(()=>{
+              setUser({displayName:data.name , email : data.email})
+              const userInfo = {
+                name: data.name ,
+                email : data.email 
+              }
+              axiosPublic.post('/users', userInfo)
+              .then(res => {
+                console.log(res.data)
+                if(res.data.insertedId){
+                  toast.success('Account created successfully!')
+                }
+              })
+
+            })
       })
       .catch (err => {
             if(err.message === 'Firebase: Error (auth/email-already-in-use).') {
