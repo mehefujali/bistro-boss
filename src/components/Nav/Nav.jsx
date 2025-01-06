@@ -49,7 +49,7 @@ const Nav = () => {
           <ul className="menu menu-horizontal items-center px-1 hidden lg:flex gap-4 uppercase">
             <NavLink>Home</NavLink>
             <NavLink>Contact Us</NavLink>
-            <NavLink>Dashboard</NavLink>
+            <NavLink to="/dashboard">Dashboard</NavLink>
             <NavLink to="/menu">Our Menu</NavLink>
             <NavLink to="/ourshop/salad">Our shop</NavLink>
             <Link to="dashboard/cart">

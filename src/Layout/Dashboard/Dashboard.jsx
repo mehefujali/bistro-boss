@@ -57,7 +57,7 @@ const Dashboard = () => {
 
             <li>
               <NavLink
-                to="/add-revies"
+                to="/dashboard/all-users"
                 className=" flex gap-1 text-lg  items-center"
               >
                 {" "}
