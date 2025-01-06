@@ -12,7 +12,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 const Login = () => {
+  const axiosPublic = useAxiosPublic();
   const { state } = useLocation();
   const { googleSignIn, user, emailLogin } = useContext(AuthContext);
   useEffect(() => {
@@ -46,20 +48,28 @@ const Login = () => {
       .catch((err) => {
         if (err.message === "Firebase: Error (auth/invalid-credential).") {
           toast.error("Invalid email or password. Please try again.");
-        }
-        else{
-          toast.error('Login failed. Please try again.')
+        } else {
+          toast.error("Login failed. Please try again.");
         }
       });
   };
 
   const handleGooogleSignIn = () => {
     googleSignIn()
-      .then(() => {
-        toast.success('Sign in success')
+      .then((res) => {
+        const userInfo = {
+          email: res?.user?.email,
+          name: res?.user?.displayName,
+        };
+
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data) {
+            toast.success("Sign in success");
+          }
+        });
       })
       .catch(() => {
-        toast.error('Google login failed. Please try again.') 
+        toast.error("Google login failed. Please try again.");
       });
   };
 
@@ -125,7 +135,10 @@ const Login = () => {
                 <LoadCanvasTemplate />
               </div>
             </label>
-            <label htmlFor="" className=" w-full flex flex-col gap-1 my-2 items-start">
+            <label
+              htmlFor=""
+              className=" w-full flex flex-col gap-1 my-2 items-start"
+            >
               <input
                 {...register("captcha", { required: true })}
                 type="text"
@@ -152,12 +165,12 @@ const Login = () => {
             </span>
             <p>or sign with</p>
             <div className=" flex w-fit gap-2 mx-auto mt-3">
-              <div 
-              onClick={()=>{
-                toast.error('Login failed. Please try again.')
-             }}
-              
-              className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+              <div
+                onClick={() => {
+                  toast.error("Login failed. Please try again.");
+                }}
+                className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit"
+              >
                 {" "}
                 <FaFacebookF />
               </div>
@@ -168,9 +181,12 @@ const Login = () => {
                 {" "}
                 <FaGoogle />
               </div>
-              <div onClick={()=>{
-                 toast.error('Login failed. Please try again.')
-              }} className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit">
+              <div
+                onClick={() => {
+                  toast.error("Login failed. Please try again.");
+                }}
+                className=" cursor-pointer text-lg p-2 rounded-full border border-black w-fit"
+              >
                 {" "}
                 <IoLogoGithub />
               </div>

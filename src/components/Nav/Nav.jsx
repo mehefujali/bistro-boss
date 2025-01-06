@@ -28,7 +28,7 @@ const Nav = () => {
             >
               <NavLink>Home</NavLink>
               <NavLink>Contact Us</NavLink>
-              <NavLink>Dashboard</NavLink>
+              <NavLink to='/dashboard'>Dashboard</NavLink>
               <NavLink to="/menu">Our Menu</NavLink>
               <NavLink to="/ourshop">Our shop</NavLink>
             </ul>
