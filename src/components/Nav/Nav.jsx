@@ -52,7 +52,7 @@ const Nav = () => {
             <NavLink>Dashboard</NavLink>
             <NavLink to="/menu">Our Menu</NavLink>
             <NavLink to="/ourshop/salad">Our shop</NavLink>
-            <Link>
+            <Link to="dashboard/cart">
               <div className="indicator">
                 <span className="indicator-item badge bg-yellow-500 text-xs">
                   {cart.length}
