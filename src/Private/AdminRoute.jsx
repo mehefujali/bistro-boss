@@ -17,6 +17,7 @@ const AdminRoute = ({children}) => {
   if (user && isAdmin) {
     return children;
   }
+  return <Navigate to='/'></Navigate>
 };
 
 export default AdminRoute;

@@ -21,7 +21,7 @@ const Dashboard = () => {
               <h1 className=" text-3xl font-bold ">Bistro boss</h1>
             </div>
             <li>
-              <NavLink to="/" className=" flex gap-1 text-lg  items-center">
+              <NavLink to="/dashboard/admin-home" className=" flex gap-1 text-lg  items-center">
                 {" "}
                 <FaHome />
                 Admin Home{" "}
@@ -29,7 +29,7 @@ const Dashboard = () => {
             </li>
             <li>
               <NavLink
-                to="/review"
+                to="/dashboard/add-items"
                 className=" flex gap-1 text-lg  items-center"
               >
                 {" "}

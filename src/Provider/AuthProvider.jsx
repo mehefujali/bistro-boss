@@ -15,9 +15,9 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic();
   const [user, setUser] = useState(null);
-  const [loding , setLoding] = useState(true)
+  const [loding, setLoding] = useState(true);
   const googleProvider = new GoogleAuthProvider();
   const googleSignIn = () => {
     return signInWithPopup(auth, googleProvider);
@@ -29,37 +29,31 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const updateUser = (data) => {
-     return updateProfile(auth.currentUser ,data)
-  }
-  const signOutUser = () =>{
-      signOut(auth)
-      
-  }
+    return updateProfile(auth.currentUser, data);
+  };
+  const signOutUser = () => {
+    signOut(auth);
+  };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      
-      if(currentUser){
+      if (currentUser) {
         //get token and store clinent
         const userInfo = {
-          email: currentUser.email
-        }
-        axiosPublic.post('/jwt' , userInfo)
-        .then(res=>{
-          
-          if(res.data.token){
-            localStorage.setItem('access-token' , res.data.token)
+          email: currentUser.email,
+        };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
             setUser(currentUser);
-            setLoding(false)
+            setLoding(false);
           }
-        })
-      }
-      else{
-        localStorage.removeItem('access-token')
+        });
+      } else {
+        localStorage.removeItem("access-token");
         setUser(currentUser);
-        setLoding(false)
+        setLoding(false);
         //todo remove token (if token stored in the clint side)
       }
-     
     });
 
     return () => {
@@ -73,7 +67,7 @@ const AuthProvider = ({ children }) => {
     emailLogin,
     user,
     signOutUser,
-    loding ,
+    loding,
     updateUser,
     setUser,
   };

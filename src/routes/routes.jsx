@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import Main from "../Layout/Main/Main";
 import Home from "../Pages/Home/Home";
 import Menu from "../Pages/Menu/Menu";
@@ -9,6 +9,9 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import PrivateRoute from "../Private/PrivateRoute";
+import AddItems from "../Pages/Dashboard/AddItems/AddItems";
+import Admin from "../Pages/Dashboard/Admin/Admin";
+import AdminRoute from "../Private/AdminRoute";
 
 const routes = createBrowserRouter([
   {
@@ -45,13 +48,37 @@ const routes = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // {
+      //    path: '/dashboard',
+      //    element: <Navigate to="/dashboard/admin-home" replace/>
+      // },
       {
         path: "/dashboard/cart",
         element: <Cart />,
       },
       {
         path: "/dashboard/all-users",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/add-items",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/admin-home",
+        element: (
+          <AdminRoute>
+            <Admin />
+          </AdminRoute>
+        ),
       },
     ],
   },
