@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import useCart from "../../Hooks/useCart";
+import PrivateNavLink from "../../Private/PrivateNavLink";
 
 const Nav = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -49,7 +50,7 @@ const Nav = () => {
           <ul className="menu menu-horizontal items-center px-1 hidden lg:flex gap-4 uppercase">
             <NavLink>Home</NavLink>
             <NavLink>Contact Us</NavLink>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            <PrivateNavLink><NavLink to="/dashboard">Dashboard</NavLink></PrivateNavLink>
             <NavLink to="/menu">Our Menu</NavLink>
             <NavLink to="/ourshop/salad">Our shop</NavLink>
             <Link to="dashboard/cart">
