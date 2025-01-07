@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
   }
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      
       if(currentUser){
         //get token and store clinent
         const userInfo = {
@@ -48,14 +48,18 @@ const AuthProvider = ({ children }) => {
           
           if(res.data.token){
             localStorage.setItem('access-token' , res.data.token)
+            setUser(currentUser);
+            setLoding(false)
           }
         })
       }
       else{
         localStorage.removeItem('access-token')
+        setUser(currentUser);
+        setLoding(false)
         //todo remove token (if token stored in the clint side)
       }
-      setLoding(false)
+     
     });
 
     return () => {
