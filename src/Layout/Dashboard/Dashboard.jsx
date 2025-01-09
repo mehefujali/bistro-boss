@@ -8,9 +8,11 @@ import "./dashboard.css";
 import { ImSpoonKnife } from "react-icons/im";
 import { TfiMenuAlt } from "react-icons/tfi";
 import useAdmin from "../../Hooks/useAdmin";
+import useCart from "../../Hooks/useCart";
 
 const Dashboard = () => {
   const [isAdmin ]= useAdmin();
+  const [cart] = useCart()
 
   return (
     <div className=" grid grid-cols-12 h-screen">
@@ -107,7 +109,7 @@ const Dashboard = () => {
                 className=" flex gap-1 text-lg  items-center"
               >
                 {" "}
-                <HiOutlineShoppingCart /> My cart{" "}
+                <HiOutlineShoppingCart /> My cart ({cart.length})
               </NavLink>
             </li>
 

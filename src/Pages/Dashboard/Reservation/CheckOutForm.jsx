@@ -12,7 +12,7 @@ const CheckOutForm = () => {
   const [clientSecret, setClientSecret] = useState();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [cart] = useCart();
+  const [cart,refetch] = useCart();
   const price = cart?.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {
@@ -40,7 +40,6 @@ const CheckOutForm = () => {
       toast.error(error.message);
     } else {
       console.log("payment methode", paymentMethod);
-     
     }
 
     //     conform payments
@@ -60,8 +59,22 @@ const CheckOutForm = () => {
       console.log("payment error ", conError);
     } else {
       console.log("payment intant ", paymentIntent);
-      if(paymentIntent.status === "succeeded"){
-            toast.success("Payment success");
+      if (paymentIntent.status === "succeeded") {
+        toast.success("Payment success");
+        // now save ta payment in tha data base
+
+        const payment = {
+          email: user.email,
+          name: user.displayName,
+          price: paymentIntent.amount / 100,
+          date: new Date(),
+          cartId: cart.map((item) => item._id),
+          menuItemId: cart.map((item) => item.menuId),
+          status: "pending",
+        };
+        const {data} = await  axiosSecure.post('/payment-save' , payment)
+        refetch()
+        console.log(data)
       }
     }
   };
