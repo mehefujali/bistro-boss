@@ -13,6 +13,7 @@ import AddItems from "../Pages/Dashboard/AddItems/AddItems";
 import Admin from "../Pages/Dashboard/Admin/Admin";
 import AdminRoute from "../Private/AdminRoute";
 import ManageItem from "../Pages/Dashboard/ManageItem/ManageItem";
+import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const routes = createBrowserRouter([
       {
         path: "/dashboard/cart",
         element: <Cart />,
+      },
+      {
+        path: "/dashboard/reservation",
+        element: <Reservation/>,
       },
       {
         path: "/dashboard/all-users",

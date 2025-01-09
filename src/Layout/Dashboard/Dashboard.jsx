@@ -83,7 +83,7 @@ const Dashboard = () => {
             </li>
             <li>
               <NavLink
-                to="/review"
+                to="/dashboard/reservation"
                 className=" flex gap-1 text-lg  items-center"
               >
                 {" "}
