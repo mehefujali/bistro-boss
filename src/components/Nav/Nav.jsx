@@ -1,14 +1,17 @@
-import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import useCart from "../../Hooks/useCart";
 import PrivateNavLink from "../../Private/PrivateNavLink";
+import useAuth from "../../Hooks/useAuth";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
+import { useState } from "react";
 
 const Nav = () => {
-  const { user, signOutUser } = useContext(AuthContext);
-  const [cart] = useCart()
-  
+  const { user } = useAuth();
+  const [cart] = useCart();
+  const [isOpen , setIsOpen] = useState(false)
+
   return (
     <div>
       <div
@@ -29,7 +32,7 @@ const Nav = () => {
             >
               <NavLink>Home</NavLink>
               <NavLink>Contact Us</NavLink>
-              <NavLink to='/dashboard'>Dashboard</NavLink>
+              <NavLink to="/dashboard">Dashboard</NavLink>
               <NavLink to="/menu">Our Menu</NavLink>
               <NavLink to="/ourshop">Our shop</NavLink>
             </ul>
@@ -50,7 +53,9 @@ const Nav = () => {
           <ul className="menu menu-horizontal items-center px-1 hidden lg:flex gap-4 uppercase">
             <NavLink>Home</NavLink>
             <NavLink>Contact Us</NavLink>
-            <PrivateNavLink><NavLink to="/dashboard">Dashboard</NavLink></PrivateNavLink>
+            <PrivateNavLink>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </PrivateNavLink>
             <NavLink to="/menu">Our Menu</NavLink>
             <NavLink to="/ourshop/salad">Our shop</NavLink>
             <Link to="dashboard/cart">
@@ -66,15 +71,18 @@ const Nav = () => {
           </ul>
           {user ? (
             <div>
-              {" "}
-              <button
-                onClick={() => {
-                  signOutUser();
-                }}
-                className=" ml-8 uppercase"
-              >
-                Logout
-              </button>{" "}
+              <div onClick={()=>setIsOpen(!isOpen)} className=" h-10 w-10 cursor-pointer border-2 border-white rounded-full ml-4 overflow-hidden ">
+                <img
+                  src={
+                    user?.photoURL ||
+                    "https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/default-avatar-profile-picture-male-icon.png"
+                  }
+                  alt=""
+                />
+              </div>
+              {isOpen&&<div>
+              <ProfileMenu setIsOpen={setIsOpen}></ProfileMenu>
+              </div>}
             </div>
           ) : (
             <div>

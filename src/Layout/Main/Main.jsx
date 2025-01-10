@@ -17,7 +17,7 @@ const Main = () => {
         </div>
       )}
 
-      <div className=" min-h-[calc(100vh-257px)]">
+      <div className=" min-h-[calc(100vh-257px)]" id="close-drop-profile">
         <Outlet></Outlet>
       </div>
 

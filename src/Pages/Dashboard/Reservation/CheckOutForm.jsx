@@ -12,13 +12,15 @@ const CheckOutForm = () => {
   const [clientSecret, setClientSecret] = useState();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const [cart,refetch] = useCart();
+  const [cart, refetch] = useCart();
   const price = cart?.reduce((total, item) => total + item.price, 0);
 
   useEffect(() => {
-    axiosSecure.post("/create-payment-intent", { price }).then((res) => {
-      setClientSecret(res.data.clientSecret);
-    });
+    if (price) {
+      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+        setClientSecret(res.data.clientSecret);
+      });
+    }
   }, [axiosSecure, price]);
 
   const handleSubmit = async (event) => {
@@ -72,9 +74,9 @@ const CheckOutForm = () => {
           menuItemId: cart.map((item) => item.menuId),
           status: "pending",
         };
-        const {data} = await  axiosSecure.post('/payment-save' , payment)
-        refetch()
-        console.log(data)
+        const { data } = await axiosSecure.post("/payment-save", payment);
+        refetch();
+        console.log(data);
       }
     }
   };
