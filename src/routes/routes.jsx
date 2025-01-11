@@ -6,7 +6,7 @@ import OurShop from "../Pages/OurShop/OurShop";
 import Login from "../auth/Login/Login";
 import Register from "../auth/Register/Register";
 import Dashboard from "../Layout/Dashboard/Dashboard";
-import Cart from "../Pages/Dashboard/Cart/Cart";
+
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import PrivateRoute from "../Private/PrivateRoute";
 import AddItems from "../Pages/Dashboard/AddItems/AddItems";
@@ -14,6 +14,7 @@ import Admin from "../Pages/Dashboard/Admin/Admin";
 import AdminRoute from "../Private/AdminRoute";
 import ManageItem from "../Pages/Dashboard/ManageItem/ManageItem";
 import Reservation from "../Pages/Dashboard/Reservation/Reservation";
+import Cart from "../Pages/Cart/Cart";
 
 const routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
         path: "register",
         element: <Register />,
       },
+      {
+        path:'carts',
+        element: <Cart/>
+      }
     ],
   },
   {

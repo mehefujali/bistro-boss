@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-
+import "animate.css";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import useCart from "../../Hooks/useCart";
 import PrivateNavLink from "../../Private/PrivateNavLink";
@@ -10,7 +10,8 @@ import { useState } from "react";
 const Nav = () => {
   const { user } = useAuth();
   const [cart] = useCart();
-  const [isOpen , setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  
 
   return (
     <div>
@@ -71,7 +72,10 @@ const Nav = () => {
           </ul>
           {user ? (
             <div>
-              <div onClick={()=>setIsOpen(!isOpen)} className=" h-10 w-10 cursor-pointer border-2 border-white rounded-full ml-4 overflow-hidden ">
+              <div
+                onClick={() => setIsOpen(!isOpen)}
+                className=" h-10 w-10 cursor-pointer border-2 border-white rounded-full ml-4 overflow-hidden "
+              >
                 <img
                   src={
                     user?.photoURL ||
@@ -80,12 +84,17 @@ const Nav = () => {
                   alt=""
                 />
               </div>
-              {isOpen&&<div>
-              <ProfileMenu setIsOpen={setIsOpen}></ProfileMenu>
-              </div>}
+              {isOpen && (
+                <div className={`animate__animated animate__fadeIn w-fit`}>
+                  <ProfileMenu
+                    setIsOpen={setIsOpen}
+                   
+                  ></ProfileMenu>
+                </div>
+              )}
             </div>
           ) : (
-            <div>
+            <div className="">
               <Link to="/login" className=" ml-8 uppercase">
                 Login
               </Link>

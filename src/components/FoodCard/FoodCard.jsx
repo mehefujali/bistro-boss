@@ -56,7 +56,7 @@ const FoodCard = ({ recommend }) => {
     <div>
       <div className="  w-full h-full bg-gray-100">
         <div>
-          <img className=" w-full  object-contain" src={image} alt="" />
+          <img className=" w-full h-64  object-cover" src={image} alt="" />
         </div>
         <div className="  mx-auto p-6 flex  flex-col gap-2 justify-between">
           <h1 className=" text-lg md:text-2xl font-semibold">{name}</h1>

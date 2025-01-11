@@ -96,7 +96,7 @@ const AddItems = () => {
                 <input
                   {...register("price", { required: true })}
                   className=" input focus:outline-none rounded-md focus:border-none border"
-                  type="number"
+                  type="text"
                 />
               </label>
             </div>
